@@ -1,0 +1,343 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Automotive Dashboard Theme - Light Mode (minimal, dark preferred) */
+    --background: 220 15% 95%;
+    --foreground: 220 15% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 10%;
+
+    /* Neon Cyan Primary */
+    --primary: 189 94% 43%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 189 94% 50%;
+    --primary-glow: 189 100% 60%;
+
+    --secondary: 220 15% 88%;
+    --secondary-foreground: 220 15% 10%;
+
+    --muted: 220 15% 90%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 189 94% 43%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Neon Status Colors */
+    --success: 142 76% 48%;
+    --success-foreground: 0 0% 100%;
+    --success-glow: 142 76% 60%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-glow: 0 84% 65%;
+
+    --warning: 45 93% 47%;
+    --warning-foreground: 220 15% 10%;
+    --warning-glow: 45 93% 60%;
+
+    --border: 220 15% 82%;
+    --input: 220 15% 85%;
+    --ring: 189 94% 43%;
+
+    --radius: 0.5rem;
+
+    /* Custom Automotive Tokens */
+    --gradient-dashboard: linear-gradient(135deg, hsl(0, 0%, 0%) 0%, hsl(230 35% 7%) 100%);
+    --gradient-neon-cyan: linear-gradient(135deg, hsl(234, 88%, 23%) 0%, hsl(189 100% 60%) 100%);
+    --gradient-neon-green: linear-gradient(135deg, hsl(118, 88%, 52%) 0%, hsl(142 76% 60%) 100%);
+    --gradient-neon-red: linear-gradient(135deg, hsl(4, 100%, 50%) 0%, hsl(0 84% 65%) 100%);
+    --gradient-neon-amber: linear-gradient(135deg, hsl(10, 89%, 47%) 0%, hsl(45 93% 60%) 100%);
+    
+    --glow-cyan: 0 0 20px hsla(24, 95%, 9%, 0.6);
+    --glow-green: 0 0 20px hsla(20, 82%, 41%, 0.6);
+    --glow-red: 0 0 20px hsla(60, 4%, 66%, 0.6);
+    --glow-amber: 0 0 20px hsla(240, 87%, 49%, 0.6);
+    
+    --shadow-neon-card: 0 8px 32px rgba(255, 0, 0, 0.3)0.3), 0 0 20px rgba(0, 230, 255, 0.1);
+    --shadow-elevated-neon: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 230, 255, 0.2);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 220 15% 92%;
+    --sidebar-foreground: 220 15% 15%;
+    --sidebar-primary: 189 94% 43%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 88%;
+    --sidebar-accent-foreground: 220 15% 10%;
+    --sidebar-border: 220 15% 80%;
+    --sidebar-ring: 189 94% 43%;
+  }
+
+  .dark {
+    /* SmartPark Luxury Red Car Theme - Deep Black & Crimson */
+    /* Background: Deep luxury black (#0A0A0F → #121212) */
+    --background: 240 20% 4%;
+    --foreground: 0 0% 85%; /* Soft light gray (#D9D9D9) */
+
+    /* Cards: Dark graphite with subtle transparency */
+    --card: 240 15% 8%;
+    --card-foreground: 0 0% 90%;
+    --popover: 240 18% 9%;
+    --popover-foreground: 0 0% 90%;
+
+    /* Primary accent: Bold Red (#E50914) */
+    --primary: 356 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 356 89% 55%;
+    --primary-glow: 356 100% 60%;
+
+    /* Secondary: Dark gray for buttons (#1C1C1F) */
+    --secondary: 240 8% 12%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 240 10% 10%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 356 89% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status colors */
+    --success: 142 76% 48%;
+    --success-foreground: 0 0% 100%;
+    --success-glow: 142 76% 60%;
+
+    --destructive: 0 100% 56%; /* Crimson (#FF1E1E) */
+    --destructive-foreground: 0 0% 100%;
+    --destructive-glow: 0 100% 65%;
+
+    --warning: 38 95% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-glow: 38 95% 65%;
+
+    --border: 0 0% 15%;
+    --input: 240 15% 12%;
+    --ring: 356 89% 48%;
+
+    /* Luxury gradients with deep blacks */
+    --gradient-dashboard: linear-gradient(135deg, #0A0A0F 0%, #121212 100%);
+    --gradient-neon-cyan: linear-gradient(135deg, hsl(189 94% 48%) 0%, hsl(189 100% 60%) 100%);
+    --gradient-neon-green: linear-gradient(135deg, hsl(142 76% 48%) 0%, hsl(142 76% 60%) 100%);
+    --gradient-neon-red: linear-gradient(135deg, hsl(356 89% 48%) 0%, hsl(0 100% 56%) 100%);
+    --gradient-neon-amber: linear-gradient(135deg, hsl(38 95% 50%) 0%, hsl(38 95% 65%) 100%);
+    
+    --glow-cyan: 0 0 22px hsla(189, 94%, 60%, 0.6);
+    --glow-green: 0 0 22px hsla(142, 76%, 60%, 0.6);
+    --glow-red: 0 0 32px hsla(356, 89%, 55%, 0.8), 0 0 64px hsla(356, 89%, 55%, 0.4);
+    --glow-amber: 0 0 22px hsla(38, 95%, 60%, 0.6);
+    
+    --shadow-neon-card: 0 12px 40px rgba(0,0,0,0.7), 0 0 32px rgba(229, 9, 20, 0.2), inset 0 1px 0 rgba(255,255,255,0.05);
+    --shadow-elevated-neon: 0 16px 52px rgba(0,0,0,0.8), 0 0 40px rgba(229, 9, 20, 0.25), inset 0 1px 0 rgba(255,255,255,0.06);
+    
+    --sidebar-background: 240 15% 7%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 356 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 15% 10%;
+    --sidebar-accent-foreground: 0 0% 85%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 356 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground font-exo antialiased;
+    background: var(--gradient-dashboard);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-orbitron;
+  }
+
+  /* Glassmorphism effect */
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-xl border-2 border-primary/30;
+    box-shadow: var(--shadow-neon-card);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-primary/60 hover:shadow-[0_0_30px_rgba(0,230,255,0.3)];
+  }
+
+  /* Neon glow effects */
+  .neon-cyan {
+    text-shadow: var(--glow-cyan);
+  }
+
+  .neon-green {
+    text-shadow: var(--glow-green);
+  }
+
+  .neon-red {
+    text-shadow: var(--glow-red);
+  }
+
+  /* Ambient red underglow utility for headers/icons */
+  .ambient-red {
+    box-shadow: 0 0 32px rgba(229, 9, 20, 0.4), 0 8px 24px rgba(229, 9, 20, 0.2);
+  }
+
+  /* Luxury car glow - soft red illumination */
+  .car-glow {
+    filter: drop-shadow(0 12px 40px rgba(229, 9, 20, 0.35)) drop-shadow(0 0 60px rgba(255, 30, 30, 0.25));
+  }
+
+  /* Digital gauge number styling */
+  .gauge-number {
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 20px rgba(229, 9, 20, 0.6), 0 0 40px rgba(229, 9, 20, 0.3);
+  }
+
+  /* Electric pulse animation for buttons */
+  @keyframes electric-pulse {
+    0%, 100% {
+      box-shadow: 0 0 8px rgba(229, 9, 20, 0.4), 0 0 16px rgba(229, 9, 20, 0.2), inset 0 0 8px rgba(229, 9, 20, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba(229, 9, 20, 0.6), 0 0 32px rgba(229, 9, 20, 0.4), inset 0 0 12px rgba(229, 9, 20, 0.2);
+    }
+  }
+
+  .electric-pulse:hover {
+    animation: electric-pulse 1.5s ease-in-out infinite;
+  }
+
+  .neon-amber {
+    text-shadow: var(--glow-amber);
+  }
+
+  /* HUD Grid Background */
+  .hud-grid {
+    background-image: 
+      linear-gradient(rgba(229, 9, 20, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(229, 9, 20, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-scroll 20s linear infinite;
+  }
+
+  @keyframes grid-scroll {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+
+  /* Radar sweep animation */
+  @keyframes radar-sweep {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .radar-sweep {
+    animation: radar-sweep 4s linear infinite;
+  }
+
+  /* Odometer counter animation */
+  @keyframes odometer-roll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+  /* Engine start button effect */
+  .engine-start-btn {
+    @apply relative overflow-hidden;
+    box-shadow: 0 0 20px rgba(0, 230, 255, 0.5), inset 0 0 20px rgba(0, 230, 255, 0.2);
+  }
+
+  .engine-start-btn::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .engine-start-btn:hover::before {
+    transform: translateX(100%);
+  }
+
+  /* Car drive-in animation */
+  @keyframes car-drive-in {
+    0% {
+      transform: translateX(-100%) scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes car-drive-out {
+    0% {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%) scale(0.8);
+      opacity: 0;
+    }
+  }
+
+  .car-drive-in {
+    animation: car-drive-in 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .car-drive-out {
+    animation: car-drive-out 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Headlight glow on hover */
+  .headlight-glow {
+    @apply transition-all duration-300;
+  }
+
+  .headlight-glow:hover {
+    box-shadow: 0 0 40px rgba(0, 230, 255, 0.8), 0 0 80px rgba(0, 230, 255, 0.4);
+    transform: scale(1.05);
+  }
+
+  /* Speedometer needle animation */
+  @keyframes needle-sweep {
+    0% {
+      transform: rotate(-90deg);
+    }
+    100% {
+      transform: rotate(90deg);
+    }
+  }
+
+  .needle-sweep {
+    animation: needle-sweep 2s ease-in-out;
+  }
+
+  /* Terminal style text */
+  .terminal-text {
+    @apply font-mono text-primary/80;
+    text-shadow: 0 0 5px rgba(0, 230, 255, 0.5);
+  }
+}

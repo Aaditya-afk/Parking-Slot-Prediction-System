@@ -1,0 +1,7 @@
+{
+  "slot_number": "SLOT_10",
+  "booking_type": "immediate",
+  "duration_minutes": 60,
+  "user_name": "Test User",
+  "user_email": "test@example.com"
+}

@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    container_name: smartpark_db
+    environment:
+      POSTGRES_DB: smartpark
+      POSTGRES_USER: smartpark_user
+      POSTGRES_PASSWORD: smartpark_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - smartpark_network
+
+  # Redis for caching and WebSocket scaling
+  redis:
+    image: redis:7-alpine
+    container_name: smartpark_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - smartpark_network
+
+  # SmartPark Backend API
+  backend:
+    build: .
+    container_name: smartpark_backend
+    environment:
+      - DATABASE_URL=postgresql://smartpark_user:smartpark_password@postgres:5432/smartpark
+      - REDIS_URL=redis://redis:6379
+      - ARDUINO_PORT=/dev/ttyUSB0
+      - SIMULATOR_MODE=true
+    volumes:
+      - ./:/app
+      - /dev:/dev  # For Arduino access
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - smartpark_network
+    privileged: true  # For Arduino access
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0  # Arduino device
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: smartpark_nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+    networks:
+      - smartpark_network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  smartpark_network:
+    driver: bridge
